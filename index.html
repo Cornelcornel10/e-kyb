@@ -2,11 +2,10 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <base href="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>e-KYB</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.jpg">
 
     <style>
         * {
@@ -24,7 +23,8 @@
             overflow: auto;
         }
 
-        /* Background wrapper with 3D perspective */
+        
+
         .background-wrapper {
             position: fixed;
             top: 0;
@@ -35,10 +35,9 @@
             z-index: 0;
             perspective: 1200px;
             perspective-origin: center;
-            background: #1c2526; /* Fallback color */
+            background: #1c2526;
         }
 
-        /* Video background */
         .background-video {
             position: absolute;
             top: 0;
@@ -49,7 +48,6 @@
             z-index: 0;
         }
 
-        /* Vignette effect */
         .background-wrapper::before {
             content: '';
             position: absolute;
@@ -61,8 +59,6 @@
             z-index: 1;
         }
 
-
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -71,7 +67,6 @@
             z-index: 10;
         }
 
-        /* Header */
         header {
             background-color: transparent;
             padding: 1.5rem 0;
@@ -79,7 +74,6 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
         }
 
         header .container {
@@ -134,7 +128,6 @@
             color: #fff;
         }
 
-        /* Hamburger menu */
         .hamburger {
             display: none;
             font-size: 1.5rem;
@@ -142,10 +135,22 @@
             cursor: pointer;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             .hamburger {
                 display: block;
+                
+                
+                
             }
+
+            .container {
+                padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+            }
+            
 
             nav {
                 display: none;
@@ -153,7 +158,8 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: rgb(0, 110, 255);
+                background-color: rgba(0, 0, 0, 0.95);
+                opacity: 0.9;
                 padding: 1rem;
                 z-index: 999;
             }
@@ -178,9 +184,42 @@
                 text-align: center;
                 width: fit-content;
             }
+
+            .hero-content h2 {
+                font-size: 0.5rem; /* Ukuran lebih kecil */
+                line-height: 1.4;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .btn-start {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+                display: block;
+                margin: 1rem auto 0;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding: 2rem 1rem;
+            }
+
+             .logo {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+  }
+
+            
+            
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -195,7 +234,7 @@
         }
 
         .hero-content h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: bold;
             line-height: 1.2;
             margin-bottom: 1rem;
@@ -229,7 +268,6 @@
             background: #4ecdc4;
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -281,7 +319,7 @@
 
         .modal-form button {
             padding: 12px 30px;
-            background: #6b48a6;
+            background: #4ecdc4;
             color: white;
             border: none;
             border-radius: 5px;
@@ -307,18 +345,18 @@
     </style>
 </head>
 <body>
-    <!-- Background wrapper with video -->
     <div class="background-wrapper">
-        <video class="background-video" autoplay loop muted playsinline poster="assets/fallback-bg.jpg">
-            <source src="assets/videoplayback.mp4" type="video/mp4">
+        <video class="background-video" autoplay loop muted playsinline poster="/assets/fallback-bg.jpg">
+            <source src="/assets/videoplayback.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
-
-    <!-- Header -->
     <header>
         <div class="container">
+            <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </div>
             <div class="logo">
                 <h1>e-KYB</h1>
             </div>
@@ -330,13 +368,10 @@
                 </ul>
             </nav>
             <a href="#" class="btn-contact" onclick="openModal()">Hubungi Kami</a>
-            <div class="hamburger" onclick="toggleNav()">
-                <i class="fas fa-bars"></i>
-            </div>
+
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -347,7 +382,6 @@
         </div>
     </section>
 
-    <!-- Modal -->
     <div class="modal" id="contactModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">×</span>
@@ -362,9 +396,7 @@
         </div>
     </div>
 
-    <!-- JavaScript for modal, nodes, particles, and navbar -->
     <script>
-        // Modal functionality
         function openModal() {
             document.getElementById('contactModal').style.display = 'flex';
         }
@@ -380,25 +412,6 @@
             }
         };
 
-        // Node animation
-        function createNode() {
-            const node = document.createElement('div');
-            node.classList.add('node');
-            const size = Math.random() * 6 + 6; // Size between 6px and 12px
-            const drift = Math.random() * 2 - 1; // Random drift -1 to 1
-            node.style.width = `${size}px`;
-            node.style.height = `${size}px`;
-            node.style.left = `${Math.random() * 100}vw`;
-            node.style.top = `${100 + Math.random() * 20}vh`;
-            node.style.setProperty('--drift', drift);
-            node.style.animation = `floatNode ${Math.random() * 6 + 4}s linear infinite`;
-            document.querySelector('.background-wrapper').appendChild(node);
-            node.addEventListener('animationend', () => {
-                node.remove();
-            });
-        }
-
-        // Navbar toggle for mobile
         function toggleNav() {
             const nav = document.querySelector('nav');
             nav.classList.toggle('active');
