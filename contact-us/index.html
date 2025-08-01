@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="/assets/logo.jpg">
 
-    <style>
+ 	<style>
         * {
             margin: 0;
             padding: 0;
@@ -63,87 +63,6 @@
             z-index: 1;
         }
 
-        /* Particle styles (distant stars) */
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 2;
-            transform: translateZ(-600px);
-        }
-
-        @keyframes floatParticle {
-            0% {
-                transform: translateZ(-600px) translateY(0) translateX(0);
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateZ(-600px) translateY(-150vh) translateX(calc(var(--drift) * 8vw));
-                opacity: 0;
-            }
-        }
-
-        /* Node styles (network points) */
-        .node {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: rgba(78, 205, 196, 0.8);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 3;
-            transform-style: preserve-3d;
-            box-shadow: 0 0 15px rgba(78, 205, 196, 0.7), 0 0 5px rgba(78, 205, 196, 1);
-        }
-
-        /* Connection lines */
-        .node::before {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 1px;
-            background: linear-gradient(to right, rgba(168, 85, 247, 0.5), rgba(168, 85, 247, 0));
-            transform-origin: left;
-            transform: rotateY(45deg);
-            opacity: 0.5;
-            animation: pulseLine 2s ease-in-out infinite;
-        }
-
-        .node::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 1px;
-            background: linear-gradient(to right, rgba(168, 85, 247, 0.5), rgba(168, 85, 247, 0));
-            transform-origin: left;
-            transform: rotateY(-45deg);
-            opacity: 0.5;
-            animation: pulseLine 2s ease-in-out infinite reverse;
-        }
-
-        @keyframes pulseLine {
-            0% { opacity: 0.5; transform: rotateY(45deg) scaleX(1); }
-            50% { opacity: 0.8; transform: rotateY(45deg) scaleX(1.2); }
-            100% { opacity: 0.5; transform: rotateY(45deg) scaleX(1); }
-        }
-
-        @keyframes floatNode {
-            0% {
-                transform: translateZ(0) translateY(0) translateX(0) rotateX(0deg) rotateY(0deg) scale(1);
-                opacity: 0.8;
-            }
-            50% {
-                transform: translateZ(150px) translateY(-50vh) translateX(calc(var(--drift) * 20vw)) rotateX(90deg) rotateY(90deg) scale(1.5);
-                opacity: 1;
-            }
-            100% {
-                transform: translateZ(0) translateY(-100vh) translateX(calc(var(--drift) * 40vw)) rotateX(180deg) rotateY(180deg) scale(1);
-                opacity: 0;
-            }
-        }
 
         /* Container */
         .container {
@@ -224,44 +143,6 @@
             cursor: pointer;
         }
 
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: rgb(0, 110, 255);
-                padding: 1rem;
-                z-index: 999;
-            }
-
-            nav.active {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            nav ul li a {
-                font-size: 1.2rem;
-            }
-
-            .btn-contact {
-                margin: 1rem auto;
-                display: block;
-                text-align: center;
-                width: fit-content;
-            }
-        }
-
         /* Hero Section */
         .hero {
             min-height: 70vh; /* Reduced from 100vh to allow footer visibility */
@@ -271,6 +152,7 @@
             text-align: center;
             padding-top: 80px; /* Account for fixed header */
             flex: 1; /* Fill available space */
+            margin-top: 100px;
         }
 
         .hero-content {
@@ -420,13 +302,6 @@
             color: #4ecdc4;
         }
 
-        @media (max-width: 768px) {
-            footer {
-                flex-direction: column; /* Stack columns on mobile */
-                text-align: center;
-            }
-        }
-
         /* Attribution for Vecteezy */
         .attribution {
             position: fixed;
@@ -436,7 +311,87 @@
             color: rgba(255, 255, 255, 0.7);
             z-index: 10;
         }
-    </style>
+        /* CSS tidak diubah, diasumsikan sudah optimal sesuai kode Anda. */
+        /* Untuk perbaikan mobile, pastikan ada media query responsive */
+        @media (max-width: 768px) {
+        @media (max-width: 767px) {
+            .hamburger {
+                display: block;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+            
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                opacity: 0.9;
+                padding: 1rem;
+                z-index: 999;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+            }
+
+            .btn-contact {
+                margin: 1rem auto;
+                display: block;
+                text-align: center;
+                width: fit-content;
+            }
+
+            .hero-content h2 {
+                font-size: 2.5rem; /* Ukuran lebih kecil */
+                line-height: 1.4;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .btn-start {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+                display: block;
+                margin: 1rem auto 0;
+                text-align: center;
+            }
+
+            .hero-content {
+                padding: 2rem 1rem;
+            }
+
+            .logo {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+  }
+            
+            
+        }
+}
+</style>
 </head>
 <body>
     <!-- Background wrapper with video -->
@@ -447,28 +402,23 @@
         </video>
     </div>
 
-    <!-- Attribution for Vecteezy -->
-    <div class="attribution">
-        <a href="https://www.vecteezy.com/free-videos/network-background" target="_blank" style="color: rgba(255, 255, 255, 0.7); text-decoration: underline;"></a>
-    </div>
-
     <!-- Header -->
     <header>
         <div class="container">
+                        <div class="hamburger" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </div>
             <div class="logo">
                 <h1>e-KYB</h1>
             </div>
             <nav>
                 <ul>
                     <li><a href="/">Beranda</a></li>
-                    <li><a href=/product/">Fitur</a></li>
+                    <li><a href="/product/">Fitur</a></li>
                     <li><a href="/contact-us/">Kontak</a></li>
                 </ul>
             </nav>
             <a href="#" class="btn-contact" onclick="openModal()">Hubungi Kami</a>
-            <div class="hamburger" onclick="toggleNav()">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </header>
 
